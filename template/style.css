@@ -53,11 +53,11 @@ html, body {
 
 .radio {
   width: 100%;
-  background: transparent;
 }
 
-.stations {
-  background: radial-gradient(at bottom,#fff69b,#fff);;
+.stations{
+  width: 100%;
+  background: radial-gradient(at bottom,  #fff9c4,#ffcc00), #fff ;
   box-shadow: inset 5px 5px 25px #bababa;
   color: red;
 }
