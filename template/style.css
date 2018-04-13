@@ -1,0 +1,102 @@
+@font-face {
+    font-family: indie;
+    src: url(font.ttf);
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+#background {
+    position:absolute;
+    z-index:0;
+    display:block;
+    color:black;
+    font-family: 'indie', cursive;
+    font-size: 5em;
+    color: #bababa;
+}
+
+#bg-text {
+    transform:rotate(45deg);
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(#bababa,#fff);
+}
+
+.section {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.title {
+  background: linear-gradient(#d1022b,#770017);
+  height: 100px;
+  color: #fff;
+  font-size: 3em;
+  font-family: 'indie', cursive;
+}
+
+#icon {
+  float: right;
+  margin: 0 20px 0 0;
+}
+
+.radio {
+  width: 100%;
+  background: transparent;
+}
+
+.stations {
+  background: radial-gradient(at bottom,#fff69b,#fff);;
+  box-shadow: inset 5px 5px 25px #bababa;
+  color: red;
+}
+
+.feature-3 {
+  background: radial-gradient(at bottom,#fff69b,#fff);;
+  box-shadow: inset 5px 5px 25px #bababa;
+}
+
+.bottom {
+  background: linear-gradient(#bababa,#ddd);
+  height: 50px;
+  color: #fff;
+  font-size: 1em;
+  position: relative;
+  bottom: 0;
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .radio,
+  .stations,
+  .feature-3 {
+    width: 50%;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .page {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .radio,
+  .stations,
+  .feature-3 {
+    width: 33.3%;
+  }
+  .header {
+    height: 400px;
+  }
+}
