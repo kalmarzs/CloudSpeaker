@@ -6,7 +6,12 @@
 html, body {
     margin: 0px;
     padding: 0px;
-    
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    margin: 0;
 }
 
 #background {
@@ -14,13 +19,15 @@ html, body {
     z-index:0;
     display:block;
     color:black;
-    font-family: 'indie', cursive;
-    font-size: 5em;
-    color: #bababa;
+    
 }
 
 #bg-text {
     transform:rotate(45deg);
+    color: transparent;
+    text-shadow: 2px 2px rgba(255,255,255,0.3), -2px -2px rgba(0,0,0,0.1);
+    font-family: 'indie', cursive;
+    font-size: 5em;
 }
 
 .page {
@@ -35,7 +42,6 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .title {
@@ -51,20 +57,33 @@ html, body {
   margin: 0 20px 0 0;
 }
 
+.panel {
+  width: 100%;
+  margin-top: 15px;
+  font-family: arial;
+}
+
 .radio {
   width: 100%;
 }
 
-.stations{
+#radio {
   width: 100%;
-  background: radial-gradient(at bottom,  #fff9c4,#ffcc00), #fff ;
-  box-shadow: inset 5px 5px 25px #bababa;
-  color: red;
+  height: 100%;
+  z-index:1;
 }
 
-.feature-3 {
-  background: radial-gradient(at bottom,#fff69b,#fff);;
-  box-shadow: inset 5px 5px 25px #bababa;
+#settings, #connection, #stations {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin-top: 15px;
+  z-index:1;
+}
+
+#radio p, #stations p, #settings p {
+  margin: 5px;
+  z-index: 1;
 }
 
 .bottom {
@@ -76,14 +95,65 @@ html, body {
   bottom: 0;
 }
 
+/* INSTRUMENT PANEL */
+.instrument {
+  width: 140px;
+  height: 110px;
+  background: radial-gradient(at 50% 100%, #fffed8, #ffcc00);
+  border-top: 2px solid rgba(0,0,0,0.6);
+  border-left: 2px solid rgba(0,0,0,0.6);
+  border-right: 2px solid rgba(255,255,255,0.6);
+  border-bottom: 2px solid rgba(255,255,255,0.6);
+  margin: 10px auto;
+  box-shadow: inset 0 0 15px 0 #777;
+}
+
+.center {
+    margin: auto;
+}
+
+#instrument-label {
+  color: #000;
+  font-size: 1em;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#hand {
+  height: 80%;
+  width: 1px;
+  background: #f00;
+  margin: -60px auto;
+  transform: rotate(-45deg);
+  transform-origin: 100% 100%;
+  z-index: 2;
+}
+
+.scale {
+ height: 7px;
+ width: 80%;
+ background: transparent;
+ border-left: 1px solid #000;
+ border-right: 1px solid #000;
+ border-bottom: 1px solid #000;
+ margin: 35px auto;
+}
+
+.values {
+ height: 100%;
+ width: 19%;
+}
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-  .radio,
-  .stations,
-  .feature-3 {
+  .panel {
     width: 50%;
   }
+  .radio {
+    width: 100%;
+  }
 }
+
+
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
@@ -91,9 +161,11 @@ html, body {
     width: 960px;
     margin: 0 auto;
   }
-  .radio,
-  .stations,
-  .feature-3 {
+  .radio {
+    width: 100%;
+  }
+  
+  .panel {
     width: 33.3%;
   }
   .header {
