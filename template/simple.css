@@ -1,0 +1,200 @@
+@font-face {
+    font-family: indie;
+    src: url(font.ttf);
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: arial;
+    background: #a7ff91;
+    color: #fff;
+}
+
+/* PLAYER */
+input[type=button] {
+    width: 70px;
+    height: 70px;
+    color: #fff;
+    font-size: 2em;
+    background: #fff8e2;
+    border: none;
+    margin: 30px 0;
+    padding: 0px;
+    border-radius: 40px;
+    border-top: 3px solid rgba(255,255,255, 0.7);
+    border-left: 3px solid rgba(255,255,255, 0.7);
+    border-right: 3px solid rgba(20,20,20, 0.3);
+    border-bottom: 3px solid rgba(20,20,20, 0.3);
+    box-shadow: 3px 1px 2px #333;
+    text-shadow: 1px 1px white, -1px -1px #444;
+}
+
+input[type=button]:hover {
+    background: linear-gradient(#bbb,#bababa);
+    border-top: 3px solid rgba(255,255,255, 0.7);
+    border-left: 3px solid rgba(255,255,255, 0.7);
+    border-right: 3px solid rgba(20,20,20, 0.7);
+    border-bottom: 3px solid rgba(20,20,20, 0.7);
+}
+
+input[type=button].active {
+    background: linear-gradient(#bababa,#bbb);
+    border-top: 3px solid rgba(20,20,20, 0.5);
+    border-left: 3px solid rgba(20,20,20, 0.5);
+    border-right: 3px solid rgba(200,200,200, 0.5);
+    border-bottom: 3px solid rgba(200,200,200, 0.5);
+}
+
+select {
+    appearance: none;
+    border: none;
+    width: 300px;
+    height: 70px;
+    border-radius: 40px;
+    font-size: 2em;
+/*    background: #fff8e2; */
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 72%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - .5em) .5em;
+  background-size:
+    10px 10px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  overflow: hidden;
+
+}
+
+select:focus {
+  background-image:
+    linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%),
+    radial-gradient(gray 70%, transparent 72%);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - .5em) .5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+  border-color: green;
+  outline: 0;
+}
+
+select option {
+    background: #000;
+}
+
+.player {
+    width: 80%;
+    margin: auto;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  box-shadow: 0 0 20px #333;
+}
+
+.section {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.title {
+  background: linear-gradient(#d1022b,#770017);
+  height: 100px;
+  color: #fff;
+  font-size: 3em;
+  font-family: 'indie', cursive;
+}
+
+#icon {
+  float: right;
+  margin: 0 20px 0 0;
+}
+
+.panel {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.radio {
+  width: 100%;
+
+}
+
+#radio {
+  width: 100%;
+  height: 100%;
+  z-index:1;
+  border-top: 2px dotted #000;
+}
+
+#settings, #connection, #stations {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin-top: 15px;
+  text-shadow: 1px 1px 1px #000;
+  z-index:1;
+}
+
+#radio p, #stations p, #settings p {
+  margin: 5px;
+  z-index: 1;
+}
+
+.bottom {
+  background: linear-gradient(#d1022b,#770017);
+  height: 50px;
+  color: #fff;
+  font-size: 1em;
+  position: relative;
+  bottom: 0;
+}
+
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .panel {
+    width: 50%;
+  }
+  .radio {
+    width: 100%;
+  }
+}
+
+
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .page {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .radio {
+    width: 100%;
+  }
+  
+  .panel {
+    width: 33.3%;
+  }
+  .header {
+    height: 400px;
+  }
+}
