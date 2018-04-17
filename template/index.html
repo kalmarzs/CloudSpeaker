@@ -1,6 +1,8 @@
 <html>
 <head>
-<title>Cranberry</title>
+<title>CloudCast</title>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="style.css">
 <link rel="shortcut icon" type="image/x-icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png"/>
@@ -8,20 +10,14 @@
 <body>
 <div class='page'>
   <div class="section title">
-    <div id="icon"><img src='icon.png'/></div>Cranberry
+    <div id="icon"><img src='icon.png'/></div>
+    <p>CloudCast</p>
   </div>
-  <hr>
   <div class="section radio">
       <div id="radio">
         <p>Radio</p>
-          <input type="button" value="&#10703;" onClick="prevStation()">
-          <input type="button" value="&#10704;" onClick="nextStation()">
           <input type="button" value="&#9658;" onClick="playStation()">
-          <input type="button" value="&#9724;" onClick="stopStation()">
       </div>
-    <div id="background">
-      <p id="bg-text">Radio</p>
-    </div>
   </div>
   <div class="section panel">
     <div id="stations">
@@ -32,47 +28,13 @@
         </ul>
       </p>
     </div>
-    <div id="background">
-      <p id="bg-text">Stations</p>
-    </div>
   </div>
   <div class="section panel">
-    <div id="background">
-      <p id="bg-text">Settings</p>
-    </div>
       <div id="settings">
         <p>Settings</p>
       </div>
   </div>
   <div class="section panel">
-    <div id="background">
-      <p id="bg-text">System</p>
-    </div>
-      <div id="connection">
-        <div class="instrument">
-    	    <div id="background">
-    	      <div id="instrument-label">
-    		<p>SIGNAL</p>
-    	      </div>
-    	    </div>
-    	    <div class="scale">
-    	    </div>
-    	    <div id="hand">
-    	    </div>
-        </div>
-        <br/>
-        <div class="instrument">
-    	    <div id="background">
-    	      <div id="instrument-label">
-    		<p>BUFFER</p>
-    	      </div>
-    	    </div>
-    	    <div class="scale">
-    	    </div>
-    	    <div id="hand">
-    	    </div>
-        </div>
-      </div>
   </div>
   <div class="section bottom">
     <p>Copyright</p>
