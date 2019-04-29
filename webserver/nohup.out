@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "./server.py", line 13, in <module>
+    httpd = socketserver.TCPServer(("", PORT), Handler)
+  File "/usr/lib64/python3.6/socketserver.py", line 453, in __init__
+    self.server_bind()
+  File "/usr/lib64/python3.6/socketserver.py", line 467, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
