@@ -2,18 +2,33 @@
 
 body {
 	background: #FFFDD0;
+	font-size: 3em;
 }
 
 h1 {
 	text-align: center;
 	font-family: 'Shadows Into Light Two', cursive;
-	font-size: 5em;
-	background: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+	font-size: 0.5em;
+	background-image: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
 		    -webkit-background-clip: text;
 		    -webkit-text-fill-color: transparent;
-text-shadow: 0 -1px 1px #FFFFFF, 0 1px 1px #666666;
+	color: #fff;
+	position: relative;
+	text-shadow: none;
+}
+
+h1:before {
+	background: none;
+	content: attr(data-text);
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	text-shadow: 0 3px 0 rgba(0, 0, 0, .3);
 }
 
 h1 span {
         font-family: 'Gugi', cursive;
 }
+select { font-size: 2em; }
+button { font-size: 2em; }
