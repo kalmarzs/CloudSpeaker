@@ -26,6 +26,10 @@ for pin in pins:
 
 @app.route("/")
 def main():
+    return render_template('main.html', **templateData)
+
+@app.route("/control")
+def control():
    # For each pin, read the pin state and store it in the pins dictionary:
    for pin in pins:
       pins[pin]['state'] = GPIO.input(pin)
@@ -34,10 +38,10 @@ def main():
       'pins' : pins
       }
    # Pass the template data into the template main.html and return it to the user
-   return render_template('main.html', **templateData)
+   return render_template('control.html', **templateData)
 
 # The function below is executed when someone requests a URL with the pin number and action in it:
-@app.route("/<changePin>/<action>")
+@app.route("/control/<changePin>/<action>")
 def action(changePin, action):
    # Convert the pin from the URL into an integer:
    changePin = int(changePin)
@@ -62,7 +66,7 @@ def action(changePin, action):
       'pins' : pins
    }
 
-   return render_template('main.html', **templateData)
+   return render_template('control.html', **templateData)
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
