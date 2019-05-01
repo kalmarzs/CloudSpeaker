@@ -26,6 +26,7 @@ for pin in pins:
 
 @app.route("/")
 def main():
+    templateData = {}
     return render_template('index.html', **templateData)
 
 @app.route("/control")
