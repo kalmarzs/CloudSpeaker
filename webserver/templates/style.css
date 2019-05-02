@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Gugi|Shadows+Into+Light+Two');
+@font-face {
+    font-family: Fontello;
+    src: url(fontello.woff);
+}
 
 body {
 	background: #FFFDD0;
@@ -31,4 +35,6 @@ h1 span {
         font-family: 'Gugi', cursive;
 }
 select { font-size: 2em; }
-button { font-size: 2em; }
+button { font-size: 2em; 
+	font-family: 'Fontello';
+	}
