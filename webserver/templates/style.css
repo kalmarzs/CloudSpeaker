@@ -6,6 +6,10 @@
 
 body {
 	background: #FFFDD0;
+	background-image: url('background.jpg');
+	background-repeat: no-repeat;
+	background-attachement: fixed;
+	background-position: center top;
 	font-size: 3em;
 }
 
