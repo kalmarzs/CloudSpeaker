@@ -8,7 +8,7 @@ body {
 	background: #FFFDD0;
 	background-image: url('background.jpg');
 	background-repeat: no-repeat;
-	background-attachement: fixed;
+	background-attachment: fixed;
 	background-position: center top;
 	font-size: 3em;
 }
@@ -38,7 +38,31 @@ h1:before {
 h1 span {
         font-family: 'Gugi', cursive;
 }
-select { font-size: 2em; }
+
 button { font-size: 2em; 
-	font-family: 'Fontello';
-	}
+	border-radius: 70px;
+	border: none;
+	width: 120px;
+	height: 120px;
+	background-image: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+	box-shadow: 2px 2px 2px 0 #333, inset 2px 2px 5px 0 #eee;
+}
+
+.controls {
+    display: inline-block;
+}
+
+.stations {
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.stations img {
+    width: 200px;
+}
+
+.inactive {
+    filter: grayscale(100%);
+}
