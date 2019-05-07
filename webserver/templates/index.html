@@ -2,17 +2,36 @@
 <head>
    <title>(C)LoudSpeaker</title>
    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+   <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('button').click(function() {
+            $.getJSON('/'+this.id,
+                function(data) {});
+            return false;
+          });
+        });
+        $(function() {
+          $('a').click(function() {
+            $.getJSON('/station/'+this.id,
+                function(data) {});
+            return false;
+          });
+        });
+</script>
 </head>
 <body>
-	<h1>(C)Loud<span>Speaker</span></h1>
-	
-	<div class="controls"><button type="button" id="off"><img src="{{ url_for('static',filename='styles/power-2-256.png') }}" width="75%"></button>
-        <button type="button" id="voldn"><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}" width="75%"></button>
-	<button type="button" id="volup"><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" width="75%"></button>
-        <button type="button" id="mute"><img src="{{ url_for('static',filename='styles/mute-256.png') }}" width="75%"></button>
-	</div>
-	<hr/>
-	<div class="stations"><img src="http://www.retroradio.hu/wp-content/themes/retroradio/assets/dist/img/logo.svg" /></div>
-	<div class="stations"><img src="https://upload.wikimedia.org/wikipedia/de/thumb/d/d3/Bayern_3.svg/320px-Bayern_3.svg.png" class="inactive"/></div>
+    <div class="controls">
+	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}" /></button>
+	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}" /></button>
+	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+    </div>
+    <hr/>
+    {% for row in rows %}
+    <div class="stations"><a href=# id="{{row["id"]}}"><img src="{{row["logo"]}}" /></a></div>
+    {% endfor %}
+    <!--div class="onair"><img src=""/></div-->
 </body>
 </html>

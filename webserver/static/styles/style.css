@@ -1,42 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Gugi|Shadows+Into+Light+Two');
-@font-face {
-    font-family: Fontello;
-    src: url(fontello.woff);
-}
+button:focus {outline:0;}
 
 body {
 	background: #FFFDD0;
-	background-image: url('background.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center top;
 	font-size: 3em;
-}
-
-h1 {
-	text-align: center;
-	font-family: 'Shadows Into Light Two', cursive;
-	font-size: 0.5em;
-	background-image: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
-		    -webkit-background-clip: text;
-		    -webkit-text-fill-color: transparent;
-	color: #fff;
-	position: relative;
-	text-shadow: none;
-}
-
-h1:before {
-	background: none;
-	content: attr(data-text);
-	left: 0;
-	position: absolute;
-	top: 0;
-	z-index: -1;
-	text-shadow: 0 3px 0 rgba(0, 0, 0, .3);
-}
-
-h1 span {
-        font-family: 'Gugi', cursive;
 }
 
 button { font-size: 2em; 
@@ -44,12 +13,28 @@ button { font-size: 2em;
 	border: none;
 	width: 120px;
 	height: 120px;
-	background-image: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
-	box-shadow: 2px 2px 2px 0 #333, inset 2px 2px 5px 0 #eee;
+	margin: 10px auto;
+	background-image: -webkit-linear-gradient(top, #f0b7a1 0%,#efdcd5 20%,#efdcd5 25%,#efdcd5 25%,#aa2614 50%,#aa2e01 51%,#efdcd5 100%,#bf6e4e 100%);
+	box-shadow: 2px 2px 2px 0 #333, inset 2px 2px 5px 0 #ddd;
+}
+
+button:hover {
+    box-shadow: inset -2px -2px 5px 2px #222, inset 2px 2px 5px 2px #eee;
+}
+
+button:active {
+    box-shadow: inset 2px 2px 5px 2px #222, inset -2px -2px 5px 2px #fff;
+}
+
+
+button img {
+    margin: 10px auto;
+    width: 100px;
 }
 
 .controls {
-    display: inline-block;
+    margin: 0 auto;
+    display: flex;
 }
 
 .stations {
@@ -61,8 +46,21 @@ button { font-size: 2em;
 
 .stations img {
     width: 200px;
+    filter: grayscale(100%);
 }
 
-.inactive {
-    filter: grayscale(100%);
+.stations img:hover {
+    filter: none;
+}
+
+.onair img{
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0px;
+    opacity: 0.3;
 }
