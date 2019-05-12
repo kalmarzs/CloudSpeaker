@@ -51,7 +51,7 @@ def station(station_id):
     rows=cur.fetchall()
     for url in rows:
         print (url[0])
-    stream.play(url[0])
+    stream.play(url[0], station_id)
     return ("nothing")
 
 @app.route("/admin")
