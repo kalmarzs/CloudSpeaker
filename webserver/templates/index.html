@@ -12,12 +12,20 @@
             return false;
           });
         });
+
         $(function() {
           $('a').click(function() {
             $.getJSON('/station/'+this.id,
-                function(data) {});
+            function(data) {});
             return false;
           });
+        });
+
+        $(function() {
+          $('a').click(function() {
+            $(this).attr('id', '#');
+            $(this.img).attr('style', 'filter: grayscale(0%);');
+        });
         });
 </script>
 </head>

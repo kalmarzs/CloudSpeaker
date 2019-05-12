@@ -3,7 +3,8 @@
 import subprocess
 
 def play(url):
-    subprocess.Popen(["/usr/bin/mplayer", url])
+    cmd=["/usr/bin/mplayer", url]
+    subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
 def stop():
     subprocess.Popen(["/usr/bin/pkill", "mplayer"])
