@@ -14,6 +14,10 @@ def main():
     cur.execute("select id, logo from stations order by id;")
     rows = cur.fetchall()
     conn.close()
+#    if (rows["pid"] !=""):
+#     style='style="filter: grayscale(0%);"'
+#    else:
+#     style='style="filter: grayscale(100%);"'
     return render_template("index.html",rows = rows)
 
 @app.route('/turn_off')
