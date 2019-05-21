@@ -30,13 +30,31 @@
 </script>
 </head>
 <body>
-    <div class="controls">
+    <!--div class="controls">
 	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
 	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
 	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
 	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
     </div>
-    <hr/>
+    <hr/-->
+    <nav id="top">
+    <div class="top-controls">
+	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
+	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
+	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+    </div>
+    </nav>
+    <nav id="side">
+    <div class="side-controls">
+	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
+	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
+	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+    </div>
+    </nav>
+
+
     {% for row in rows %}
     <div class="stations"><a href=# id="{{row["id"]}}"><img src="{{row["logo"]}}" id="logo" /></a></div>
     {% endfor %}

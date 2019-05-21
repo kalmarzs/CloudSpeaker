@@ -10,7 +10,7 @@ def main():
    conn = sql.connect("radio.db")
    conn.row_factory = sql.Row
    cur = conn.cursor()
-   cur.execute("select id, logo from stations;")
+   cur.execute("select id, logo from stations order by id;")
    rows = cur.fetchall(); 
    return render_template("index.html",rows = rows)
 
