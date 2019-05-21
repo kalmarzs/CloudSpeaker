@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+   <title>(C)LoudSpeaker</title>
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+   <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('button').click(function() {
+            $.getJSON('/'+this.id,
+                function(data) {});
+            return false;
+          });
+        });
+
+        $(function() {
+          $('a').click(function() {
+            $.getJSON('/station/'+this.id,
+            function(data) {});
+            return false;
+          });
+        });
+
+        $(function() {
+          $('img').click(function() {
+            $('#logo').attr('style', '');
+            $(this).attr('style', 'filter: grayscale(0%);');
+        });
+        });
+</script>
+</head>
+<body>
+    <div class="controls">
+	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
+	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
+	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+    </div>
+    <hr/>
+    {% for row in rows %}
+    <div class="stations"><a href=# id="{{row["id"]}}"><img src="{{row["logo"]}}" id="logo" /></a></div>
+    {% endfor %}
+    <!--div class="onair"><img src=""/></div-->
+</body>
+</html>
