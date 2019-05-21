@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'expo';
+    src: url('expo.ttf');
+}
+
 button:focus {outline:0;}
 
 body {
@@ -63,4 +68,8 @@ button img {
     left: 0;
     bottom: 0px;
     opacity: 0.3;
+}
+
+h1 {
+    font-family: expo;
 }
