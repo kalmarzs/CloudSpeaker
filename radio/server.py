@@ -8,7 +8,7 @@ import volume as volume
 
 @app.route("/")
 def main():
-    conn = sql.connect("/home/bond/CloudSpeaker/webserver/radio.db")
+    conn = sql.connect("/opt/CloudSpeaker/radio/radio.db")
     conn.row_factory = sql.Row
     cur = conn.cursor()
     cur.execute("select id, logo from stations order by id;")
@@ -47,7 +47,7 @@ def mute():
 @app.route('/station/<station_id>')
 def station(station_id):
     print (station_id)
-    conn = sql.connect("/home/bond/CloudSpeaker/webserver/radio.db")
+    conn = sql.connect("/opt/CloudSpeaker/radio/radio.db")
     conn.row_factory = sql.Row
     cur = conn.cursor()
     cur.execute("select url from stations where id="+station_id+" limit 1;")
