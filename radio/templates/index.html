@@ -2,8 +2,31 @@
 <head>
    <title>(C)LoudSpeaker</title>
    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles/lightslider.css') }}">
    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+        ul{
+                        list-style: none outside none;
+                    padding-left: 0;
+            margin: 0;
+                }
+        .demo .item{
+            margin-bottom: 60px;
+        }
+                .content-slider li{
+                    background-color: #ed3020;
+                    text-align: center;
+                    color: #FFF;
+                }
+                .content-slider h3 {
+                    margin: 0;
+                    padding: 70px 0;
+                }
+                .demo{
+                        width: 800px;
+                }
+    </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
         $(function() {
           $('button').click(function() {
@@ -28,36 +51,55 @@
         });
         });
 </script>
+    <script src="{{ url_for('static',filename='js/lightslider.js') }}"></script> 
+    <script>
+         $(document).ready(function() {
+                        $("#content-slider").lightSlider({
+                loop:true,
+                keyPress:true
+            });
+            $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }  
+            });
+                });
+    </script>
 </head>
 <body>
-    <!--div class="controls">
-	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
-	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
-	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
-	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
-    </div>
-    <hr/-->
     <nav id="top">
     <div class="top-controls">
-	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
-	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
-	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
-	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+	<button id=turn_off><img src="{{ url_for('static',filename='images/power-2-256.png') }}"/></button>
+	<button id=voldn><img src="{{ url_for('static',filename='images/volume-down-256.png') }}"/></button>
+	<button id=volup><img src="{{ url_for('static',filename='images/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='images/mute-256.png') }}" /></button>
     </div>
     </nav>
     <nav id="side">
     <div class="side-controls">
-	<button id=turn_off><img src="{{ url_for('static',filename='styles/power-2-256.png') }}"/></button>
-	<button id=voldn><img src="{{ url_for('static',filename='styles/volume-down-256.png') }}"/></button>
-	<button id=volup><img src="{{ url_for('static',filename='styles/volume-up-256.png') }}" /></button>
-	<button id=mute><img src="{{ url_for('static',filename='styles/mute-256.png') }}" /></button>
+	<button id=turn_off><img src="{{ url_for('static',filename='images/power-2-256.png') }}"/></button>
+	<button id=voldn><img src="{{ url_for('static',filename='images/volume-down-256.png') }}"/></button>
+	<button id=volup><img src="{{ url_for('static',filename='images/volume-up-256.png') }}" /></button>
+	<button id=mute><img src="{{ url_for('static',filename='images/mute-256.png') }}" /></button>
     </div>
     </nav>
-
-
-    {% for row in rows %}
-    <div class="stations"><a href=# id="{{row["id"]}}"><img src="{{row["logo"]}}" id="logo" /></a></div>
-    {% endfor %}
-    <!--div class="onair"><img src=""/></div-->
+    <div class="item">
+    <ul id="content-slider" class="content-slider">
+	<li>
+            <h3>
+		{% for row in rows %}
+		    <div class="stations"><a href=# id="{{row["id"]}}"><img src="{{row["logo"]}}" id="logo" /></a></div>
+		{% endfor %}
+	    </h3>
+	</li>
+    </ul>
+    </div>
 </body>
 </html>
