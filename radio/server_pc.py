@@ -14,6 +14,16 @@ def main():
    rows = cur.fetchall(); 
    return render_template("index.html",rows = rows)
 
+@app.route("/knob")
+def knob():
+   conn = sql.connect("radio.db")
+   conn.row_factory = sql.Row
+   cur = conn.cursor()
+   cur.execute("select id, logo from stations order by id;")
+   rows = cur.fetchall(); 
+   return render_template("knob.html",rows = rows)
+
+
 @app.route('/turn_off')
 def turn_off():
     print ("turn off")
