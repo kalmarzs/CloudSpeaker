@@ -18,7 +18,7 @@ def main():
 #     style='style="filter: grayscale(0%);"'
 #    else:
 #     style='style="filter: grayscale(100%);"'
-    return render_template("index.html",rows = rows)
+    return render_template('index.html',rows = rows)
 
 @app.route('/turn_off')
 def turn_off():
@@ -57,6 +57,17 @@ def station(station_id):
         print (url[0])
     stream.play(url[0], station_id)
     return ("nothing")
+
+@app.route('/temp', methods=['GET'])
+def temp():
+    data = request.args.get('temp')
+#    data = ("25")
+    print(data)
+    file = ('/opt/CloudSpeaker/radio/temp.txt')
+    write = open(file, 'w')
+    write.write(data)
+    write.close
+    return render_template('temp.html', data = data)
 
 @app.route("/admin")
 def admin():
