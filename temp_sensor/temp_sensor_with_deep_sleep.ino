@@ -2,10 +2,10 @@
 #include <OneWire.h>
 
 const int sleepTimeS = 30;
-const char* host = "192.168.44.8"; 
+const char* host = ""; 
 const int httpGetPort = 80;
-const char* ssid     = "Los-Kabellos";
-const char* password = "habostorta29!";
+const char* ssid     = "";
+const char* password = "";
 float celsius;
 const char* urlGet = "/temp";
 ADC_MODE(ADC_VCC);
