@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 import sqlite3 as sql
 import alsaaudio
+import stream as stream
 
 @app.route("/")
 def main():
@@ -27,6 +28,7 @@ def knob():
 @app.route('/turn_off')
 def turn_off():
     print ("turn off")
+    stream.stop()
     return ("nothing")
 
 @app.route('/voldn')
@@ -46,7 +48,17 @@ def mute():
 
 @app.route('/station/<station_id>')
 def station(station_id):
+    device = "-ao alsa:device=hw=1.0"
     print (station_id)
+    conn = sql.connect("radio.db")
+    conn.row_factory = sql.Row
+    cur = conn.cursor()
+    cur.execute("select url from stations where id="+station_id+" limit 1;")
+    conn.commit()
+    rows=cur.fetchall()
+    for url in rows:
+        print (url[0])
+    stream.play(url[0], station_id, device)
     return ("nothing")
 
 @app.route("/admin")
