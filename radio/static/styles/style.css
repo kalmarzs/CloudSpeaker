@@ -19,7 +19,7 @@ html, body {
 }
 
 body {
-	background: url('../images/background.jpg') #fffdd0;
+	background: #fffdd0;
 	font-size: 3em;
 	margin: 0 auto;
 }

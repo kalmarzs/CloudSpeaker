@@ -7,10 +7,16 @@
 	<script src="{{ url_for('static',filename='js/pureknob.js')}}" type="text/javascript"></script>
 	<script type="text/javascript">
 	    function volumeKnob() {
-		var knob = pureknob.createKnob(600, 600);
+		if (window.matchMedia("(orientation: portrait)").matches) {
+		    var size = window.innerWidth;
+		}
+		if (window.matchMedia("(orientation: landscape)").matches) {
+		    var size = window.innerHeight;
+		}
+		var knob = pureknob.createKnob(size, size);
 		knob.setProperty('angleStart', -0.75 * Math.PI);
 		knob.setProperty('angleEnd', 0.75 * Math.PI);
-		knob.setProperty('colorFG', '#333');
+		knob.setProperty('colorFG', '#f00');
 		knob.setProperty('trackWidth', 0.5);
 		knob.setProperty('valMin', 0);
 		knob.setProperty('valMax', 100);
@@ -23,35 +29,18 @@
 		var elem = document.getElementById('volume');
 		elem.appendChild(node);
 	    }
-	    function stationKnob() {
-		var knob = pureknob.createKnob(600, 600);
-		knob.setProperty('angleStart', -0.75 * Math.PI);
-		knob.setProperty('angleEnd', 0.75 * Math.PI);
-		knob.setProperty('colorFG', '#333');
-		knob.setProperty('trackWidth', 0.5);
-		knob.setProperty('valMin', 1);
-		knob.setProperty('valMax', 7);
-		knob.setValue(1);
-		var listener = function(knob, value) {
-		console.log(value);
-		};
-		knob.addListener(listener);
-		var node = knob.node();
-		var elem = document.getElementById('station');
-		elem.appendChild(node);
-	    }
 	    function ready() {
 		volumeKnob();
-		stationKnob();
 	    }
 	    document.addEventListener('DOMContentLoaded', ready, false);
+	    window.addEventListener("orientationchange", function() {
+		console.log('orientation changed');
+	    }, false);
 	</script>
     </head>
     <body>
 	<div class="main">
 	    <div id="volume"></div>
-	    <div id="display"></div>
-	    <div id="station"></div>
 	</div>
     </body>
 </html>

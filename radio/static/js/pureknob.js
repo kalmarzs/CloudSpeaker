@@ -198,7 +198,7 @@ function PureKnob() {
 				var actualEnd = angleEnd + angleOffset;
 				var value = properties.val;
 				var valueToString = properties.fnValueToString;
-				var valueStr = valueToString(value);
+				var valueStr = "♬";
 				var valMin = properties.valMin;
 				var valMax = properties.valMax;
 				var relValue = (value - valMin) / (valMax - valMin);
@@ -215,7 +215,7 @@ function PureKnob() {
 				var centerY = 0.5 * height;
 				var radius = 0.4 * smaller;
 				var lineWidth = Math.round(trackWidth * radius);
-				var fontSize = (0.2 * smaller) * textScale;
+				var fontSize = (0.7 * smaller) * textScale;
 				var fontSizeString = fontSize.toString();
 				var canvas = this._canvas;
 				var ctx = canvas.getContext('2d');
