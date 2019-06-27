@@ -3,8 +3,8 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 import sqlite3 as sql
-import alsaaudio
 import stream as stream
+import volume as volume
 
 @app.route("/")
 def main():
@@ -12,7 +12,7 @@ def main():
    conn.row_factory = sql.Row
    cur = conn.cursor()
    cur.execute("select id, logo from stations order by id;")
-   rows = cur.fetchall(); 
+   rows = cur.fetchall();
    return render_template("index.html",rows = rows)
 
 @app.route("/knob")
@@ -21,8 +21,10 @@ def knob():
    conn.row_factory = sql.Row
    cur = conn.cursor()
    cur.execute("select id, logo from stations order by id;")
-   rows = cur.fetchall(); 
-   return render_template("knob.html",rows = rows)
+   rows = cur.fetchall();
+   vol = volume.level();
+   print(vol)
+   return render_template("knob.html",rows = rows, vol = vol)
 
 
 @app.route('/turn_off')
@@ -31,18 +33,15 @@ def turn_off():
     stream.stop()
     return ("nothing")
 
-@app.route('/voldn')
-def voldn():
-    print ("volume down")
-    return ("nothing")
-
-@app.route('/volup')
-def volup():
-    print ("volume up")
+@app.route('/volume_set/<level>')
+def volume_set(level):
+    print ("volume set to level: "+level)
+    volume.set(level)
     return ("nothing")
 
 @app.route('/mute')
 def mute():
+    volume.mute()
     print ("mute")
     return ("nothing")
 

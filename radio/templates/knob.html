@@ -20,7 +20,7 @@
 		knob.setProperty('trackWidth', 0.5);
 		knob.setProperty('valMin', 0);
 		knob.setProperty('valMax', 100);
-		knob.setValue(0);
+		knob.setValue({{vol}});
 		var listener = function(knob, value) {
 		console.log(value);
 		};
@@ -36,6 +36,9 @@
 	    window.addEventListener("orientationchange", function() {
 		console.log('orientation changed');
 	    }, false);
+	    
+	    
+	    
 	</script>
     </head>
     <body>
