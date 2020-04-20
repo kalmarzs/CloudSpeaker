@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="ScreeOrientation" content="autoRotate:disabled">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+   <title>(C)LoudSpeaker</title>
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles/style_portrait.css') }}">
+   <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}">
+   <script>
+    /*Volume setting*/
+    window.addEventListener("load", function(){
+    var slider = document.querySelector("input[type='range']");
+    slider.addEventListener("change", function(){
+
+     const Http = new XMLHttpRequest();
+     const url='/setvol/'+slider.value;
+
+     Http.open("GET", url);
+     Http.send();
+     Http.onreadystatechange = (e) => {
+       console.log(Http.responseText)
+     }
+    });
+    });
+
+    /*Radio On*/
+    function RadioOn(id) {
+    const Http = new XMLHttpRequest();
+    const url='/station/'+id;
+
+    Http.open("GET", url);
+    Http.send();
+    Http.onreadystatechange = (e) => {
+       console.log(Http.responseText)
+    }
+    }
+
+    /*Radio Off*/
+    function RadioOff() {
+    const Http = new XMLHttpRequest();
+    const url='/turn_off';
+
+    Http.open("GET", url);
+    Http.send();
+    Http.onreadystatechange = (e) => {
+       console.log(Http.responseText)
+    }
+    }
+   </script>
+</head>
+<body>
+  <div class="page" style="width: 100%; height:100%;">
+  <div class="header">
+    <a href="/">
+        <h1 style="text-align: right;">(C)Loud</h1>
+        <img class="logo" src="{{ url_for('static',filename='images/icon.png') }}"/>
+        <h1 style="text-align: left;">Speaker</h1>
+    </a>
+  </div>
+  <div class="volume">
+    <input type="range" name="volume_slider" id="volume_range" min="0" max="100" value="{{vol_level}}" orient="vertical"/>
+  </div>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Radio')" id="defaultOpen"><img src="{{ url_for('static',filename='images/radio_icon.png') }}"/></button>
+  <button class="tablinks" onclick="openCity(event, 'MP3')"><img src="{{ url_for('static',filename='images/mp3_icon.png') }}"/></button>
+  <button class="tablinks" onclick="openCity(event, 'Mediathek')"><img src="{{ url_for('static',filename='images/dlna_icon.png') }}"/></button>
+  <button class="tablinks" onclick="openCity(event, 'Spotify')"><img src="{{ url_for('static',filename='images/spotify_icon.png') }}"/></button>
+</div>
+
+<!-- Tab content -->
+<div id="Radio" class="tabcontent">
+<div class="station">
+      <button class="station active" onclick="RadioOff()"><img src="{{ url_for('static',filename='images/power_icon.png') }}" style="transform: rotate(0deg);"></button>
+    {% for row in rows %}
+      <button class="station" onclick="RadioOn('{{row["id"]}}')"><img src="{{row["logo"]}}" id="station_icon" /></button>
+    {% endfor %}
+  </div>
+</div>
+
+<div id="MP3" class="tabcontent">
+  <div class="media">
+    <button class="media active" style="font-size: 2em;">&#9726;</button>
+    <button class="media" style="font-size: 2em;">&#9658;</button>
+      <select id="filter">
+          <option value="Samba">Samba</option>
+          <option value="Rumba">Rumba</option>
+          <option value="Cha-cha-cha">Cha Cha Cha</option>
+      </select>
+      <select>
+        {% for item in tracks %}
+          <option value="play/{{item}}">{{item}}</option>
+        {% endfor %}
+      </select>
+  </div>
+</div>
+
+<div id="Mediathek" class="tabcontent">
+  <p>WIP!</p>
+</div>
+
+<div id="Spotify" class="tabcontent">
+  <p>WIP!</p>
+</div>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>
