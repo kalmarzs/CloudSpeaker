@@ -6,7 +6,7 @@
    <title>(C)LoudSpeaker</title>
    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style_portrait.css') }}">
    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}">
-   <script>
+   <script type="text/javascript">
     /*Volume setting*/
     window.addEventListener("load", function(){
     var slider = document.querySelector("input[type='range']");
@@ -25,30 +25,52 @@
 
     /*Radio On*/
     function RadioOn(id) {
-    const Http = new XMLHttpRequest();
-    const url='/station/'+id;
+      const Http = new XMLHttpRequest();
+      const url='/radio/on/'+id;
 
-    Http.open("GET", url);
-    Http.send();
-    Http.onreadystatechange = (e) => {
-       console.log(Http.responseText)
-    }
+      Http.open("GET", url, false);
+      Http.send();
+      console.log(Http.responseText);
+
+      var button_class
+      button_class = document.getElementsByClassName("station");
+      for (i = 0; i < button_class.length; i++) {
+      button_class[i].className = button_class[i].className.replace(" active", "");
+      }
+
+      document.getElementById("button-"+id).className = "station active";
     }
 
     /*Radio Off*/
     function RadioOff() {
-    const Http = new XMLHttpRequest();
-    const url='/turn_off';
+      const Http = new XMLHttpRequest();
+      const url='/radio/off/off';
 
-    Http.open("GET", url);
-    Http.send();
-    Http.onreadystatechange = (e) => {
-       console.log(Http.responseText)
+      Http.open("GET", url, false);
+      Http.send();
+      console.log(Http.responseText)
+
+      var button_class
+      button_class = document.getElementsByClassName("station");
+      for (i = 0; i < button_class.length; i++) {
+      button_class[i].className = button_class[i].className.replace(" active", "");
+      }
+
+      document.getElementById("button-off").className = "station active";
     }
+
+    /*Radio Status*/
+    function RadioStatus() {
+      const Http = new XMLHttpRequest();
+      const url='/radio/status/active';
+
+      Http.open("GET", url, false);
+      Http.send();
+      document.getElementById("button-"+Http.responseText).className = "station active";
     }
    </script>
 </head>
-<body>
+<body onload="RadioStatus();">
   <div class="page" style="width: 100%; height:100%;">
   <div class="header">
     <a href="/">
@@ -71,9 +93,9 @@
 <!-- Tab content -->
 <div id="Radio" class="tabcontent">
 <div class="station">
-      <button class="station active" onclick="RadioOff()"><img src="{{ url_for('static',filename='images/power_icon.png') }}" style="transform: rotate(0deg);"></button>
+      <button id="button-off" class="station" onclick="RadioOff()"><img src="{{ url_for('static',filename='images/power_icon.png') }}" style="transform: rotate(0deg);"></button>
     {% for row in rows %}
-      <button class="station" onclick="RadioOn('{{row["id"]}}')"><img src="{{row["logo"]}}" id="station_icon" /></button>
+      <button id="button-{{row["id"]}}" class="station" onclick="RadioOn('{{row["id"]}}')"><img src="{{row["logo"]}}" id="station_icon" /></button>
     {% endfor %}
   </div>
 </div>
@@ -103,7 +125,7 @@
   <p>WIP!</p>
 </div>
 </div>
-<script>
+<script type="text/javascript">
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
