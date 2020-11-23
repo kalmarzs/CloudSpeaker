@@ -85,9 +85,10 @@
 
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'Radio')" id="defaultOpen"><img src="{{ url_for('static',filename='images/radio_icon.png') }}"/></button>
-  <button class="tablinks" onclick="openCity(event, 'MP3')"><img src="{{ url_for('static',filename='images/mp3_icon.png') }}"/></button>
+  <!--button class="tablinks" onclick="openCity(event, 'MP3')"><img src="{{ url_for('static',filename='images/mp3_icon.png') }}"/></button-->
   <button class="tablinks" onclick="openCity(event, 'Mediathek')"><img src="{{ url_for('static',filename='images/dlna_icon.png') }}"/></button>
   <button class="tablinks" onclick="openCity(event, 'Spotify')"><img src="{{ url_for('static',filename='images/spotify_icon.png') }}"/></button>
+  <button class="tablinks" onclick="openCity(event, 'AirPlay')"><img src="{{ url_for('static',filename='images/airplay_icon.png') }}"/></button>
 </div>
 
 <!-- Tab content -->
@@ -124,6 +125,11 @@
 <div id="Spotify" class="tabcontent">
   <p>WIP!</p>
 </div>
+
+<div id="AirPlay" class="tabcontent">
+  <p>WIP!</p>
+</div>
+
 </div>
 <script type="text/javascript">
 function openCity(evt, cityName) {
