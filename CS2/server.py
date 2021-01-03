@@ -27,6 +27,7 @@ def main():
     tracks = os.listdir('/media/cloudspeaker_mp3')
     vol_level = mixer.getvolume()
     temp = open("/opt/CS2/temp.txt", "r")
+    #statinfo = os.stat("/opt/CS2/temp.txt")
     return render_template('index.html',tracks = tracks, rows = rows, vol_level = vol_level[0], temp = temp.read())
 
 @app.route('/setvol/<value>')
